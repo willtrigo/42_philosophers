@@ -1,0 +1,17 @@
+## Extensions
+*.a
+*.d
+*.o
+*.out
+*.swp
+
+## Folders
+tovog/
+.vscode/
+.cache/
+
+## IDE configuration
+*commands.json
+
+## Exec
+philo
