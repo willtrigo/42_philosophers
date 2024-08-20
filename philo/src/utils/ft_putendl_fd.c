@@ -1,20 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/16 17:17:10 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/20 02:57:06 by dande-je         ###   ########.fr       */
+/*   Created: 2024/08/20 05:31:57 by dande-je          #+#    #+#             */
+/*   Updated: 2024/08/20 05:36:16 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "parse/ft_arguments.h"
+#include <stdio.h>
+#include <unistd.h>
+#include "ft_default.h"
 
-int	main(int argc, char **argv)
+static size_t	ft_strlen(char *s);
+
+void	ft_putendl_fd(char *s, int fd)
 {
-	ft_parse_arguments(--argc, ++argv);
-	exit(EXIT_SUCCESS);
+	if (write(fd, s, ft_strlen(s)) == FAIL)
+		perror("write");
+	if (write(fd, "\n", CHAR_BYTE) == FAIL)
+		perror("write");
+}
+
+static size_t	ft_strlen(char *s)
+{
+	char	*str;
+
+	str = s;
+	while (*str)
+		str++;
+	return (str - s);
 }

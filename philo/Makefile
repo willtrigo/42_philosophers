@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/16 17:07:46 by dande-je          #+#    #+#              #
-#    Updated: 2024/08/16 17:21:09 by dande-je         ###   ########.fr        #
+#    Updated: 2024/08/20 06:03:37 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,8 @@ RESET                           := \033[0m
 #******************************************************************************#
 
 SRCS_DIR                        := src/
+SRCS_PARSE_DIR                  := $(SRCS_DIR)parse/
+SRCS_UTILS_DIR                  := $(SRCS_DIR)utils/
 INCS                            := src/
 BUILD_DIR                       := build/
 
@@ -45,6 +47,10 @@ SLEEP                           := sleep 0.01
 NAME                            = philo
 
 SRCS_FILES                      += $(addprefix $(SRCS_DIR), main.c)
+SRCS_FILES                      += $(addprefix $(SRCS_PARSE_DIR), ft_arguments.c)
+SRCS_FILES                      += $(addprefix $(SRCS_UTILS_DIR), ft_output.c \
+								   ft_putendl_fd.c \
+								   ft_strtoi.c)
 
 OBJS                            += $(SRCS_FILES:%.c=$(BUILD_DIR)%.o)
 
@@ -72,8 +78,7 @@ CPPFLAGS                       := $(addprefix -I,$(INCS)) -MMD -MP
 DFLAGS                         := -Wall -Wextra -Werror -g3
 LFLAGS                         := -march=native
 LDFLAGS                        := $(addprefix -L,$(dir $(LIBS)))
-LDLIBS                         := -ldl
-COMPILE_OBJS                   = $(CC) $(CFLAGS) $(LFLAGS) $(CPPFLAGS) -c $< -o $@
+COMPILE_OBJS                   = $(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 COMPILE_EXE                    = $(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
 
 #******************************************************************************#

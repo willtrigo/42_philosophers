@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_output.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/16 17:17:10 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/20 02:57:06 by dande-je         ###   ########.fr       */
+/*   Created: 2024/08/20 05:30:33 by dande-je          #+#    #+#             */
+/*   Updated: 2024/08/20 05:37:30 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "parse/ft_arguments.h"
+#include <unistd.h>
+#include "utils/ft_utils.h"
 
-int	main(int argc, char **argv)
+void	ft_output_error(char *str)
 {
-	ft_parse_arguments(--argc, ++argv);
-	exit(EXIT_SUCCESS);
+	ft_putendl_fd(str, STDERR_FILENO);
+	exit(EXIT_FAILURE);
 }

@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_arguments.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/16 17:17:10 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/20 02:57:06 by dande-je         ###   ########.fr       */
+/*   Created: 2024/08/20 02:49:20 by dande-je          #+#    #+#             */
+/*   Updated: 2024/08/20 05:47:27 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "parse/ft_arguments.h"
+#ifndef FT_ARGUMENTS_H
+# define FT_ARGUMENTS_H
 
-int	main(int argc, char **argv)
+enum e_arguments
 {
-	ft_parse_arguments(--argc, ++argv);
-	exit(EXIT_SUCCESS);
-}
+	MINIMUM_ARGUMENTS = 5,
+	MAX_ARGUMENTS = 6,
+};
+
+void	ft_parse_arguments(int argc, char **argv);
+
+#endif

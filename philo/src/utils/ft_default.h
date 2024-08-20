@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_default.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/16 17:17:10 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/20 02:57:06 by dande-je         ###   ########.fr       */
+/*   Created: 2024/08/20 03:05:00 by dande-je          #+#    #+#             */
+/*   Updated: 2024/08/20 05:34:14 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "parse/ft_arguments.h"
+#ifndef FT_DEFAULT_H
+# define FT_DEFAULT_H
 
-int	main(int argc, char **argv)
+enum e_default
 {
-	ft_parse_arguments(--argc, ++argv);
-	exit(EXIT_SUCCESS);
-}
+	DEFAULT = 0,
+	DEFAULT_BEGIN = 1,
+	INIT = -1,
+	FAIL = -1,
+	WAIT = 1,
+	CHAR_BYTE = 1,
+};
+
+enum e_math
+{
+	MINUS = -1,
+	DECIMAL = 10,
+	ZERO = 0,
+};
+
+
+#endif
