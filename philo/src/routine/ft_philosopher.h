@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 04:52:22 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/20 05:21:28 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/09/09 08:01:21 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ struct s_info
 typedef struct s_routine	t_routine;
 struct s_routine
 {
-	t_info	*data;
+	t_info	data;
 };
+
+t_routine	*ft_routine(void);
+void		ft_routine_init(char **argv);
 
 #endif

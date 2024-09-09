@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/16 17:07:46 by dande-je          #+#    #+#              #
-#    Updated: 2024/08/20 06:03:37 by dande-je         ###   ########.fr        #
+#    Updated: 2024/09/09 07:50:29 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ RESET                           := \033[0m
 
 SRCS_DIR                        := src/
 SRCS_PARSE_DIR                  := $(SRCS_DIR)parse/
+SRCS_ROUTINE_DIR                := $(SRCS_DIR)routine/
 SRCS_UTILS_DIR                  := $(SRCS_DIR)utils/
 INCS                            := src/
 BUILD_DIR                       := build/
@@ -48,6 +49,7 @@ NAME                            = philo
 
 SRCS_FILES                      += $(addprefix $(SRCS_DIR), main.c)
 SRCS_FILES                      += $(addprefix $(SRCS_PARSE_DIR), ft_arguments.c)
+SRCS_FILES                      += $(addprefix $(SRCS_ROUTINE_DIR), ft_routine.c)
 SRCS_FILES                      += $(addprefix $(SRCS_UTILS_DIR), ft_output.c \
 								   ft_putendl_fd.c \
 								   ft_strtoi.c)

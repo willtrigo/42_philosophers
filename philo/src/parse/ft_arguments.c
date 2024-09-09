@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 02:49:06 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/20 06:13:42 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/09/09 08:22:58 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,20 @@ void	ft_parse_arguments(int argc, char **argv)
 	char	*nbr_endptr;
 
 	if (argc < MINIMUM_ARGUMENTS)
-		ft_output_error("philo: Invalid arguments, the minimun arguments are required.");
+		ft_output_error("philo: Invalid arguments,"\
+			" the minimun arguments are required.");
 	else if (argc > MAX_ARGUMENTS)
-		ft_output_error("philo: Invalid arguments, the max arguments are reached.");
+		ft_output_error("philo: Invalid arguments,"\
+			" the max arguments are reached.");
 	while (*argv)
 	{
-		nbr = ft_strtoi(*argv, &nbr_endptr);
+		nbr = ft_strtoi(*(argv++), &nbr_endptr);
 		if (*nbr_endptr)
-			ft_output_error("philo: Invalid argument, the argument must be a number.");
+			ft_output_error("philo: Invalid argument,"\
+				" the argument must be a number.");
 		else if (nbr <= DEFAULT)
-			ft_output_error("philo: Invalid argument, the argument must be a positive number.");
-		argv++;
+			ft_output_error("philo: Invalid argument,"\
+				" the argument must be a positive number "\
+				"or less that INT_MAX.");
 	}
 }
-
