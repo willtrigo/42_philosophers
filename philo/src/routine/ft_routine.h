@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_philosopher.h                                   :+:      :+:    :+:   */
+/*   ft_routine.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 04:52:22 by dande-je          #+#    #+#             */
-/*   Updated: 2024/09/09 08:01:21 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/01 01:06:54 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PHILOSOPHER_H
-# define FT_PHILOSOPHER_H
+#ifndef FT_ROUTINE_H
+# define FT_ROUTINE_H
 
 typedef _Atomic long int	t_pthread_mutex;
 
 enum e_philo
 {
 	MAX_PHILOSOPHERS = 200,
+	UNLIMITED_MEALS = -1,
+};
+
+enum e_scale_constants
+{
+	MS_PER_SEC = (int)1e3,
 };
 
 typedef struct s_info		t_info;
@@ -37,6 +43,6 @@ struct s_routine
 };
 
 t_routine	*ft_routine(void);
-void		ft_routine_init(char **argv);
+void		ft_routine_init(char **argv, t_routine *routine);
 
 #endif
