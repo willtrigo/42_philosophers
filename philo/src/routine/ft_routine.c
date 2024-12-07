@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 07:18:28 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/07 14:29:40 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/07 14:42:04 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	ft_routine_init(char **argv, t_routine *routine, int status)
 	if (*argv)
 		routine->info.number_of_times_each_philosopher_must_eat = ft_strtoll(\
 			*argv, NULL);
-	status = ft_monitor_init(&routine->monitor, routine->info.number_of_philosophers, status);
+	status = ft_monitor_init(&routine->monitor, \
+		routine->info.number_of_philosophers, status);
 	return (status);
 }

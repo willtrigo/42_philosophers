@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 11:53:01 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/07 14:30:54 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/07 14:41:22 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ int	ft_monitor_init(t_monitor *monitor, int nbr_philos, int status)
 	monitor->arr_philo = malloc(nbr_philos * sizeof(t_philo));
 	if (!monitor->arr_philo)
 		status = ft_output_error("philo: malloc: fail to init philos malloc");
-	return (status);	
+	return (status);
 }
