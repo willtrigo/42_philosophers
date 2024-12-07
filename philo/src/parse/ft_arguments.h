@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 02:49:20 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/01 01:03:12 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/07 13:41:24 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ enum e_arguments
 	MAX_ARGUMENTS = 5,
 };
 
-void	ft_parse_arguments(int argc, char **argv);
+int	ft_parse_arguments(int argc, char **argv, int status);
 
 #endif
