@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 03:05:00 by dande-je          #+#    #+#             */
-/*   Updated: 2024/11/30 23:01:00 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/07 14:11:24 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ enum e_math
 	MINUS = -1,
 	DECIMAL = 10,
 	ZERO = 0,
+};
+
+enum e_scale_constants
+{
+	MS_PER_SEC = (int)1e3,
 };
 
 #endif
