@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/16 17:07:46 by dande-je          #+#    #+#              #
-#    Updated: 2024/12/07 13:54:16 by dande-je         ###   ########.fr        #
+#    Updated: 2024/12/09 21:18:38 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ RESET                           := \033[0m
 SRCS_DIR                        := src/
 SRCS_PARSE_DIR                  := $(SRCS_DIR)parse/
 SRCS_ROUTINE_DIR                := $(SRCS_DIR)routine/
+SRCS_MONITOR_DIR                := $(SRCS_ROUTINE_DIR)monitor/
 SRCS_UTILS_DIR                  := $(SRCS_DIR)utils/
 INCS                            := src/
 BUILD_DIR                       := build/
@@ -49,9 +50,10 @@ NAME                            = philo
 
 SRCS_FILES                      += $(addprefix $(SRCS_DIR), main.c)
 SRCS_FILES                      += $(addprefix $(SRCS_PARSE_DIR), ft_arguments.c)
-SRCS_FILES                      += $(addprefix $(SRCS_ROUTINE_DIR), ft_monitor.c \
-								   ft_philo.c \
+SRCS_FILES                      += $(addprefix $(SRCS_ROUTINE_DIR), ft_info.c \
 								   ft_routine.c)
+SRCS_FILES                      += $(addprefix $(SRCS_MONITOR_DIR), ft_monitor.c \
+								   ft_philo.c)
 SRCS_FILES                      += $(addprefix $(SRCS_UTILS_DIR), ft_output.c \
 								   ft_putendl_fd.c \
 								   ft_strtoll.c)

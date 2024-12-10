@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_monitor.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/16 17:17:10 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/09 20:23:22 by dande-je         ###   ########.fr       */
+/*   Created: 2024/12/05 11:53:17 by dande-je          #+#    #+#             */
+/*   Updated: 2024/12/09 21:19:19 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "parse/ft_arguments.h"
-#include "routine/ft_routine.h"
+#ifndef FT_MONITOR_H
+# define FT_MONITOR_H
 
-int	main(int argc, char **argv)
+# include <stdbool.h>
+# include "routine/monitor/ft_philo.h"
+
+typedef struct s_monitor	t_monitor;
+struct s_monitor
 {
-	int	status;
+	long long	begin_time;
+	int			wait_to_eat;
+	bool		death_philo;
+	t_philo		*arr_philo;
+};
 
-	status = ft_parse_arguments(--argc, ++argv, EXIT_SUCCESS);
-	if (!status)
-		status = ft_routine_init(argv, ft_routine(), EXIT_SUCCESS);
-	ft_routine_destroy(ft_routine());
-	return (status);
-}
+int		ft_monitor_init(t_monitor *monitor, int nbr_philos, int status);
+void	ft_monitor_destroy(t_monitor *monitor);
+
+#endif

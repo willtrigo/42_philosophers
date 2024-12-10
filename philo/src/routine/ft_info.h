@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_philo.h                                         :+:      :+:    :+:   */
+/*   ft_info.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 13:51:40 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/07 14:13:45 by dande-je         ###   ########.fr       */
+/*   Created: 2024/12/09 21:01:25 by dande-je          #+#    #+#             */
+/*   Updated: 2024/12/09 21:12:33 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PHILO_H
-# define FT_PHILO_H
+#ifndef FT_INFO_H
+# define FT_INFO_H
 
-enum e_philo
+enum e_info
 {
 	MAX_PHILOSOPHERS = 200,
 	UNLIMITED_MEALS = -1,
 };
 
-typedef struct s_philo		t_philo;
-struct s_philo
+typedef struct s_info	t_info;
+struct s_info
 {
-	long long	time_to_last_eat;
-	int			id;
-	int			time_to_die;
-	int			time_to_eat;
-	int			time_to_sleep;
-	int			must_eat;
+	int	number_of_philosophers;
+	int	time_to_die;
+	int	time_to_eat;
+	int	time_to_sleep;
+	int	number_of_times_each_philosopher_must_eat;
 };
+
+void	ft_info_init(char **argv, t_info *info);
 
 #endif
