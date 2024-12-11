@@ -1,41 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_info.h                                          :+:      :+:    :+:   */
+/*   ft_handler.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 21:01:25 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/11 16:15:30 by dande-je         ###   ########.fr       */
+/*   Created: 2024/12/11 15:32:59 by dande-je          #+#    #+#             */
+/*   Updated: 2024/12/11 15:59:51 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_INFO_H
-# define FT_INFO_H
+#ifndef FT_HANDLER_H
+# define FT_HANDLER_H
 
-# include <pthread.h>
-
-enum e_info
+typedef enum e_handler	t_handler;
+enum e_handler
 {
-	MAX_PHILOSOPHERS = 200,
-	UNLIMITED_MEALS = -1,
+	INIT,
 };
-
-typedef struct s_info	t_info;
-struct s_info
-{
-	int				number_of_philosophers;
-	int				time_to_die;
-	int				time_to_eat;
-	int				time_to_sleep;
-	int				number_of_times_each_philosopher_must_eat;
-	pthread_mutex_t	log;
-};
-
-int	ft_info_init(
-		char **argv,
-		t_info *info,
-		int status
-		);
 
 #endif

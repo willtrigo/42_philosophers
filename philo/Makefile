@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/16 17:07:46 by dande-je          #+#    #+#              #
-#    Updated: 2024/12/11 12:56:35 by dande-je         ###   ########.fr        #
+#    Updated: 2024/12/11 16:09:19 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,8 @@ SRCS_FILES                      += $(addprefix $(SRCS_DIR), main.c)
 SRCS_FILES                      += $(addprefix $(SRCS_PARSE_DIR), ft_arguments.c)
 SRCS_FILES                      += $(addprefix $(SRCS_ROUTINE_DIR), ft_info.c \
 								   ft_routine.c)
-SRCS_FILES                      += $(addprefix $(SRCS_HANDLER_DIR), ft_handler_malloc.c)
+SRCS_FILES                      += $(addprefix $(SRCS_HANDLER_DIR), ft_handler_malloc.c \
+								   ft_handler_mutex.c)
 SRCS_FILES                      += $(addprefix $(SRCS_MONITOR_DIR), ft_fork.c \
 								   ft_monitor.c \
 								   ft_philo.c)

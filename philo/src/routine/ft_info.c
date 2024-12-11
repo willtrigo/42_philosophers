@@ -6,12 +6,14 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 21:01:29 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/11 13:29:58 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/11 16:30:28 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "routine/ft_info.h"
+#include "routine/handler/ft_handler.h"
+#include "routine/handler/ft_handler_mutex.h"
 #include "utils/ft_default.h"
 #include "utils/ft_utils.h"
 
@@ -35,5 +37,6 @@ int	ft_info_init(
 		|| info->time_to_sleep < MS_MINIMUN_PER_SEC)
 		status = ft_output_error("philo: Invalid argument,"\
 			" time must be at leat 60ms");
+	status = ft_handler_mutex(&info->log, INIT, status);
 	return (status);
 }
