@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 21:41:44 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/10 22:00:32 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:32:41 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ struct s_fork
 	pthread_mutex_t	mutex;
 };
 
-int	ft_fork_init(t_fork *fork, int status);
+int	ft_fork_init(
+		t_fork *fork,
+		int status
+		);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:51:40 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/10 19:50:15 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:30:40 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ struct s_philo
 	pthread_mutex_t	mutex;
 };
 
-void	ft_philo_init(t_philo *philo, int i, t_info info);
+void	ft_philo_init(
+			t_philo *philo,
+			int i,
+			t_info info
+			);
 
 #endif

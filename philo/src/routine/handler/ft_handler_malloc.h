@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_handler_malloc.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/16 17:17:10 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/11 13:17:38 by dande-je         ###   ########.fr       */
+/*   Created: 2024/12/11 12:51:46 by dande-je          #+#    #+#             */
+/*   Updated: 2024/12/11 13:33:21 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "parse/ft_arguments.h"
-#include "routine/ft_routine.h"
+#ifndef FT_HANDLER_MALLOC_H
+# define FT_HANDLER_MALLOC_H
 
-int	main(
-	int argc,
-	char **argv
-) {
-	int	status;
+int	ft_handler_malloc(
+		void **target,
+		int size,
+		int status,
+		char *str_err
+		);
 
-	status = ft_parse_arguments(--argc, ++argv, EXIT_SUCCESS);
-	if (status == EXIT_SUCCESS)
-		status = ft_routine_init(argv, ft_routine(), EXIT_SUCCESS);
-	ft_routine_destroy(ft_routine());
-	return (status);
-}
+#endif

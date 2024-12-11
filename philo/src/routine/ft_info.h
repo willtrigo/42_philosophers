@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 21:01:25 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/10 21:50:04 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:29:35 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ struct s_info
 	int	number_of_times_each_philosopher_must_eat;
 };
 
-int	ft_info_init(char **argv, t_info *info, int status);
+int	ft_info_init(
+		char **argv,
+		t_info *info,
+		int status
+		);
 
 #endif

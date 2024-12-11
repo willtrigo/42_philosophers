@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:51:30 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/09 21:19:26 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:30:59 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 #include "routine/monitor/ft_philo.h"
 #include "utils/ft_default.h"
 
-void	ft_philo_init(t_philo *philo, int i, t_info info)
-{
+void	ft_philo_init(
+	t_philo *philo,
+	int i,
+	t_info info
+) {
 	philo->time_to_last_eat = DEFAULT;
 	philo->id = i + DEFAULT_BEGIN;
 	philo->time_to_die = info.time_to_die;

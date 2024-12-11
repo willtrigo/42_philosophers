@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 11:53:17 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/09 22:09:55 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:31:41 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,14 @@ struct s_monitor
 	t_fork		*arr_fork;
 };
 
-int		ft_monitor_init(t_monitor *monitor, int nbr_philos, int status);
-void	ft_monitor_destroy(t_monitor *monitor);
+int		ft_monitor_init(
+			t_monitor *monitor,
+			int nbr_philos,
+			int status
+			);
+
+void	ft_monitor_destroy(
+			t_monitor *monitor
+			);
 
 #endif

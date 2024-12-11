@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 21:01:29 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/10 21:57:52 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:29:58 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 #include "utils/ft_default.h"
 #include "utils/ft_utils.h"
 
-int	ft_info_init(char **argv, t_info *info, int status)
-{
+int	ft_info_init(
+	char **argv,
+	t_info *info,
+	int status
+) {
 	info->number_of_philosophers = ft_strtoll(*argv++, NULL);
 	if (info->number_of_philosophers > MAX_PHILOSOPHERS)
 		info->number_of_philosophers = MAX_PHILOSOPHERS;

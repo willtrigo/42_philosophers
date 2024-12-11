@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 07:18:28 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/10 22:00:21 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:28:48 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,11 @@ t_routine	*ft_routine(void)
 	return (&routine);
 }
 
-int	ft_routine_init(char **argv, t_routine *routine, int status)
-{
+int	ft_routine_init(
+	char **argv,
+	t_routine *routine,
+	int status
+) {
 	int	i;
 
 	i = DEFAULT_INIT;
@@ -45,7 +48,8 @@ int	ft_routine_init(char **argv, t_routine *routine, int status)
 	return (status);
 }
 
-void	ft_routine_destroy(t_routine *routine)
-{
+void	ft_routine_destroy(
+	t_routine *routine
+) {
 	ft_monitor_destroy(&routine->monitor);
 }
