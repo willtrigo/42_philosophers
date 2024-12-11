@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 03:05:00 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/09 21:11:24 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/10 21:51:43 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ enum e_math
 enum e_time_constants
 {
 	MS_PER_SEC = (int)1e3,
+	MS_MINIMUN_PER_SEC = (int)6e4,
 };
 
 #endif

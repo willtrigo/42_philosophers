@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 04:52:22 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/09 21:19:57 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/10 22:01:05 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # include "routine/ft_info.h"
 # include "routine/monitor/ft_monitor.h"
-
-typedef _Atomic long int	t_pthread_mutex;
 
 typedef struct s_routine	t_routine;
 struct s_routine
