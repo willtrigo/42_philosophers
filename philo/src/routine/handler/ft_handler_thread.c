@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 18:35:06 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/11 22:53:36 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/12 15:38:24 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ static int	ft_handler_thread_join(
 				int status
 				);
 
+static int	ft_handler_thread_destroy(
+				int thread_status,
+				int status
+				);
+
 int	ft_handler_thread(
 	t_philo *philo,
 	t_handler type,
@@ -39,6 +44,9 @@ int	ft_handler_thread(
 			func, philo), status);
 	else if (status == EXIT_SUCCESS && type == JOIN)
 		status = ft_handler_thread_join(pthread_join(philo->thread, NULL), \
+			status);
+	else if (status == EXIT_SUCCESS && type == DESTROY)
+		status = ft_handler_thread_destroy(pthread_detach(philo->thread), \
 			status);
 	return (status);
 }
@@ -87,6 +95,25 @@ static int	ft_handler_thread_join(
 		else
 			status = ft_output_error("philo: thread join: " \
 				"unknown error occurred during thread join");
+	}
+	return (status);
+}
+
+static int	ft_handler_thread_destroy(
+				int thread_status,
+				int status
+) {
+	if (status == EXIT_SUCCESS && thread_status != DEFAULT)
+	{
+		if (thread_status == EINVAL)
+			status = ft_output_error("philo: thread destroy: " \
+				"invalid thread ID");
+		else if (thread_status == ESRCH)
+			status = ft_output_error("philo: thread destroy: " \
+				"no thread found with the given ID");
+		else
+			status = ft_output_error("philo: thread destroy: " \
+				"unknown error occurred during thread destruction");
 	}
 	return (status);
 }

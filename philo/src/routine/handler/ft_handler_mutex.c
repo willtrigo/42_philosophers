@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 15:21:51 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/11 22:03:39 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/12 15:30:36 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ static int	ft_handler_mutex_unlock(
 				int status
 				);
 
+static int	ft_handler_mutex_destroy(
+				int mutex_status,
+				int status
+				);
+
 int	ft_handler_mutex(
 	pthread_mutex_t *mutex,
 	t_handler type,
@@ -44,6 +49,8 @@ int	ft_handler_mutex(
 		status = ft_handler_mutex_lock(pthread_mutex_lock(mutex), status);
 	else if (status == EXIT_SUCCESS && type == UNLOCK)
 		status = ft_handler_mutex_unlock(pthread_mutex_unlock(mutex), status);
+	else if (status == EXIT_SUCCESS && type == DESTROY)
+		status = ft_handler_mutex_destroy(pthread_mutex_destroy(mutex), status);
 	return (status);
 }
 
@@ -106,6 +113,25 @@ static int	ft_handler_mutex_unlock(
 		else
 			status = ft_output_error("philo: mutex unlock: " \
 				"unknown error during mutex unlocking");
+	}
+	return (status);
+}
+
+static int	ft_handler_mutex_destroy(
+				int mutex_status,
+				int status
+) {
+	if (status == EXIT_SUCCESS && mutex_status != DEFAULT)
+	{
+		if (mutex_status == EINVAL)
+			status = ft_output_error("philo: mutex destroy: " \
+				"invalid mutex");
+		else if (mutex_status == EBUSY)
+			status = ft_output_error("philo: mutex destroy: " \
+				"mutex is locked or referenced");
+		else
+			status = ft_output_error("philo: mutex destroy: " \
+				"unknown error during mutex destruction");
 	}
 	return (status);
 }

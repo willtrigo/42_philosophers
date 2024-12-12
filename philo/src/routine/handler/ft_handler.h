@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 15:32:59 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/11 22:00:02 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/12 15:27:40 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ enum e_handler
 	CREATE,
 	JOIN,
 	LOCK,
-	UNLOCK
+	UNLOCK,
+	DESTROY
 };
 
 #endif
