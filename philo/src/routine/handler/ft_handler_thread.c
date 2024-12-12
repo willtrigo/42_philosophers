@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 18:35:06 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/12 15:38:24 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/12 15:58:10 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ static int	ft_handler_thread_destroy(
 				"no thread found with the given ID");
 		else
 			status = ft_output_error("philo: thread destroy: " \
-				"unknown error occurred during thread destruction");
+				"unknown error occurred during thread join");
 	}
 	return (status);
 }
