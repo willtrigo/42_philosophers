@@ -1,25 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fork.c                                          :+:      :+:    :+:   */
+/*   ft_handler_thread.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 21:41:34 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/11 16:49:36 by dande-je         ###   ########.fr       */
+/*   Created: 2024/12/11 18:35:23 by dande-je          #+#    #+#             */
+/*   Updated: 2024/12/11 18:35:43 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <pthread.h>
-#include <stdlib.h>
-#include "routine/monitor/ft_fork.h"
-#include "routine/handler/ft_handler_mutex.h"
+#ifndef FT_HANDLER_THREAD_H
+# define FT_HANDLER_THREAD_H
 
-int	ft_fork_init(
-	t_fork *fork,
-	int status
-) {
-	if (status == EXIT_SUCCESS)
-		status = ft_handler_mutex(&fork->mutex, INIT, status);
-	return (status);
-}
+#endif
