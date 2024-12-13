@@ -6,13 +6,13 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:17:10 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/11 16:37:55 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/13 12:05:35 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "parse/ft_arguments.h"
-#include "routine/ft_routine.h"
+#include "parse/arguments.h"
+#include "routine/routine.h"
 
 int	main(
 	int argc,
@@ -20,9 +20,9 @@ int	main(
 ) {
 	int	status;
 
-	status = ft_parse_arguments(--argc, ++argv, EXIT_SUCCESS);
+	status = parse_arguments(--argc, ++argv, EXIT_SUCCESS);
 	if (status == EXIT_SUCCESS)
-		status = ft_routine_init(argv, ft_routine(), status);
-	ft_routine_destroy(ft_routine());
+		status = routine_init(argv, routine(), status);
+	routine_destroy(routine());
 	return (status);
 }

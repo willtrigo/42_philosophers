@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_handler_mutex.h                                 :+:      :+:    :+:   */
+/*   handler_malloc.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/11 15:22:04 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/11 16:04:35 by dande-je         ###   ########.fr       */
+/*   Created: 2024/12/11 12:51:46 by dande-je          #+#    #+#             */
+/*   Updated: 2024/12/13 12:17:54 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_HANDLER_MUTEX_H
-# define FT_HANDLER_MUTEX_H
+#ifndef HANDLER_MALLOC_H
+# define HANDLER_MALLOC_H
 
-# include <pthread.h>
-# include "routine/handler/ft_handler.h"
-
-int	ft_handler_mutex(
-		pthread_mutex_t *mutex,
-		t_handler type,
-		int status
+int	handler_malloc(
+		void **target,
+		int size,
+		int status,
+		char *str_err
 		);
 
 #endif

@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_routine.h                                       :+:      :+:    :+:   */
+/*   arguments.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/20 04:52:22 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/11 13:27:57 by dande-je         ###   ########.fr       */
+/*   Created: 2024/08/20 02:49:20 by dande-je          #+#    #+#             */
+/*   Updated: 2024/12/13 12:18:27 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_ROUTINE_H
-# define FT_ROUTINE_H
+#ifndef ARGUMENTS_H
+# define ARGUMENTS_H
 
-# include "routine/ft_info.h"
-# include "routine/monitor/ft_monitor.h"
-
-typedef struct s_routine	t_routine;
-struct s_routine
+enum e_arguments
 {
-	t_info		info;
-	t_monitor	monitor;
+	MINIMUM_ARGUMENTS = 4,
+	MAX_ARGUMENTS = 5,
 };
 
-t_routine	*ft_routine(void);
-
-int			ft_routine_init(
-				char **argv,
-				t_routine *routine,
-				int status
-				);
-
-void		ft_routine_destroy(
-				t_routine *routine
-				);
+int	parse_arguments(int argc, char **argv, int status);
 
 #endif

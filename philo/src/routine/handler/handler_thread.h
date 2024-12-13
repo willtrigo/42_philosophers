@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fork.h                                          :+:      :+:    :+:   */
+/*   handler_thread.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 21:41:44 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/11 13:32:41 by dande-je         ###   ########.fr       */
+/*   Created: 2024/12/11 18:35:23 by dande-je          #+#    #+#             */
+/*   Updated: 2024/12/13 12:17:24 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_FORK_H
-# define FT_FORK_H
+#ifndef HANDLER_THREAD_H
+# define HANDLER_THREAD_H
 
-# include <pthread.h>
+# include "routine/handler/handler.h"
+# include "routine/monitor/philo.h"
 
-typedef struct s_fork	t_fork;
-struct s_fork
-{
-	pthread_mutex_t	mutex;
-};
-
-int	ft_fork_init(
-		t_fork *fork,
+int	handler_thread(
+		t_philo *philo,
+		t_handler type,
+		void *(*func)(void *),
 		int status
 		);
 

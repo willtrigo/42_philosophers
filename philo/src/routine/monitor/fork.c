@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_handler.h                                       :+:      :+:    :+:   */
+/*   fork.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/11 15:32:59 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/12 15:27:40 by dande-je         ###   ########.fr       */
+/*   Created: 2024/12/09 21:41:34 by dande-je          #+#    #+#             */
+/*   Updated: 2024/12/13 12:17:16 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_HANDLER_H
-# define FT_HANDLER_H
+#include <pthread.h>
+#include <stdlib.h>
+#include "routine/monitor/fork.h"
+#include "routine/handler/handler_mutex.h"
 
-typedef enum e_handler	t_handler;
-enum e_handler
-{
-	INIT,
-	CREATE,
-	JOIN,
-	LOCK,
-	UNLOCK,
-	DESTROY
-};
-
-#endif
+int	fork_init(
+	t_fork *fork,
+	int status
+) {
+	if (status == EXIT_SUCCESS)
+		status = handler_mutex(&fork->mutex, INIT, status);
+	return (status);
+}

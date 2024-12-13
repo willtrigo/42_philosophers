@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_philo.h                                         :+:      :+:    :+:   */
+/*   info.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 13:51:40 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/11 16:45:09 by dande-je         ###   ########.fr       */
+/*   Created: 2024/12/09 21:01:25 by dande-je          #+#    #+#             */
+/*   Updated: 2024/12/13 12:15:29 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PHILO_H
-# define FT_PHILO_H
+#ifndef INFO_H
+# define INFO_H
 
-# include <pthread.h>
-# include "routine/ft_info.h"
-
-typedef struct s_philo	t_philo;
-struct s_philo
+enum e_info
 {
-	long long		time_to_last_eat;
-	int				id;
-	int				time_to_die;
-	int				time_to_eat;
-	int				time_to_sleep;
-	int				must_eat;
-	pthread_t		thread;
-	pthread_mutex_t	mutex;
+	MAX_PHILOSOPHERS = 200,
+	UNLIMITED_MEALS = -1,
 };
 
-int	ft_philo_init(
-		t_philo *philo,
-		int i,
-		t_info info,
+typedef struct s_info	t_info;
+struct s_info
+{
+	int	number_of_philosophers;
+	int	time_to_die;
+	int	time_to_eat;
+	int	time_to_sleep;
+	int	number_of_times_each_philosopher_must_eat;
+};
+
+int	info_init(
+		char **argv,
+		t_info *info,
 		int status
 		);
 

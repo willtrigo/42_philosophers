@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_info.c                                          :+:      :+:    :+:   */
+/*   info.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 21:01:29 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/11 16:30:28 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/13 12:16:08 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "routine/ft_info.h"
-#include "routine/handler/ft_handler.h"
-#include "routine/handler/ft_handler_mutex.h"
-#include "utils/ft_default.h"
-#include "utils/ft_utils.h"
+#include "routine/info.h"
+#include "utils/default.h"
+#include "utils/utils.h"
 
-int	ft_info_init(
+int	info_init(
 	char **argv,
 	t_info *info,
 	int status
@@ -35,8 +33,7 @@ int	ft_info_init(
 	if (info->time_to_die < MS_MINIMUN_PER_SEC \
 		|| info->time_to_eat < MS_MINIMUN_PER_SEC \
 		|| info->time_to_sleep < MS_MINIMUN_PER_SEC)
-		status = ft_output_error("philo: Invalid argument,"\
+		status = output_error("philo: Invalid argument,"\
 			" time must be at leat 60ms");
-	status = ft_handler_mutex(&info->log, INIT, status);
 	return (status);
 }

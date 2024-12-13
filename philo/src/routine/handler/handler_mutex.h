@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_arguments.h                                     :+:      :+:    :+:   */
+/*   handler_mutex.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/20 02:49:20 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/07 13:41:24 by dande-je         ###   ########.fr       */
+/*   Created: 2024/12/11 15:22:04 by dande-je          #+#    #+#             */
+/*   Updated: 2024/12/13 12:17:40 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_ARGUMENTS_H
-# define FT_ARGUMENTS_H
+#ifndef HANDLER_MUTEX_H
+# define HANDLER_MUTEX_H
 
-enum e_arguments
-{
-	MINIMUM_ARGUMENTS = 4,
-	MAX_ARGUMENTS = 5,
-};
+# include <pthread.h>
+# include "routine/handler/handler.h"
 
-int	ft_parse_arguments(int argc, char **argv, int status);
+int	handler_mutex(
+		pthread_mutex_t *mutex,
+		t_handler type,
+		int status
+		);
 
 #endif

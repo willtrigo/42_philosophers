@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_default.h                                       :+:      :+:    :+:   */
+/*   handler_malloc.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/20 03:05:00 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/10 21:51:43 by dande-je         ###   ########.fr       */
+/*   Created: 2024/12/11 12:52:11 by dande-je          #+#    #+#             */
+/*   Updated: 2024/12/13 12:18:00 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_DEFAULT_H
-# define FT_DEFAULT_H
+#include <stdlib.h>
+#include "utils/default.h"
+#include "utils/utils.h"
 
-enum e_default
-{
-	DEFAULT = 0,
-	DEFAULT_BEGIN = 1,
-	DEFAULT_INIT = -1,
-	FAIL = -1,
-	WAIT = 1,
-	CHAR_BYTE = 1,
-};
-
-enum e_math
-{
-	MINUS = -1,
-	DECIMAL = 10,
-	ZERO = 0,
-};
-
-enum e_time_constants
-{
-	MS_PER_SEC = (int)1e3,
-	MS_MINIMUN_PER_SEC = (int)6e4,
-};
-
-#endif
+int	handler_malloc(
+	void **target,
+	int size,
+	int status,
+	char *str_err
+) {
+	if (size <= DEFAULT)
+		status = output_error(str_err);
+	if (status == EXIT_SUCCESS)
+	{
+		*target = malloc(size);
+		if (!*target)
+			status = output_error(str_err);
+	}
+	return (status);
+}
