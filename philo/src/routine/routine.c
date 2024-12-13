@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 07:18:28 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/13 12:08:50 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/13 12:45:26 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,40 +18,39 @@
 #include "routine/monitor/philo.h"
 #include "utils/default.h"
 
-t_routine	*routine(void)
+t_routine	*rt(void)
 {
-	static t_routine	routine;
+	static t_routine	rt;
 
-	return (&routine);
+	return (&rt);
 }
 
 int	routine_init(
 	char **argv,
-	t_routine *routine,
+	t_routine *rt,
 	int status
 ) {
 	int	i;
+	int	nbr_philos;
 
 	i = DEFAULT_INIT;
-	status = info_init(argv, &routine->info, status);
+	nbr_philos = DEFAULT;
+	status = info_init(argv, &rt->info, status);
 	if (status == EXIT_SUCCESS)
 	{
-		status = monitor_init(&routine->monitor, \
-			routine->info.number_of_philosophers, status);
-		while (status == EXIT_SUCCESS \
-			&& ++i < routine->info.number_of_philosophers)
-			status = philo_init(routine->monitor.philo + i, i, \
-				routine->info, status);
+		nbr_philos = rt->info.number_of_philosophers;
+		status = monitor_init(&rt->monitor, nbr_philos, status);
+		while (status == EXIT_SUCCESS && ++i < nbr_philos)
+			status = philo_init(rt->monitor.philo + i, i, rt->info, status);
 		i = DEFAULT_INIT;
-		while (status == EXIT_SUCCESS \
-			&& ++i < routine->info.number_of_philosophers)
-			status = fork_init(routine->monitor.fork + i, status);
+		while (status == EXIT_SUCCESS && ++i < nbr_philos)
+			status = fork_init(rt->monitor.fork + i, status);
 	}
 	return (status);
 }
 
 void	routine_destroy(
-	t_routine *routine
+	t_routine *rt
 ) {
-	monitor_destroy(&routine->monitor);
+	monitor_destroy(&rt->monitor);
 }
