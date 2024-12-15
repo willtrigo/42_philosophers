@@ -6,15 +6,15 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 02:49:06 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/13 12:18:40 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/15 12:52:04 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
 #include <stdlib.h>
 #include "parse/arguments.h"
-#include "utils/utils.h"
 #include "utils/default.h"
+#include "utils/utils.h"
 
 static int	check_args(char **argv, int status);
 

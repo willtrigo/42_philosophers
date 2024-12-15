@@ -6,12 +6,12 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 21:01:29 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/13 12:16:08 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/15 12:50:07 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "routine/info.h"
+#include "routine/info/info.h"
 #include "utils/default.h"
 #include "utils/utils.h"
 

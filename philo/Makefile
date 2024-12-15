@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/16 17:07:46 by dande-je          #+#    #+#              #
-#    Updated: 2024/12/15 03:06:06 by dande-je         ###   ########.fr        #
+#    Updated: 2024/12/15 12:46:39 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRCS_DIR                        := src/
 SRCS_PARSE_DIR                  := $(SRCS_DIR)parse/
 SRCS_ROUTINE_DIR                := $(SRCS_DIR)routine/
 SRCS_HANDLER_DIR                := $(SRCS_ROUTINE_DIR)handler/
+SRCS_INFO_DIR                   := $(SRCS_ROUTINE_DIR)info/
 SRCS_MONITOR_DIR                := $(SRCS_ROUTINE_DIR)monitor/
 SRCS_UTILS_DIR                  := $(SRCS_DIR)utils/
 INCS                            := src/
@@ -51,11 +52,11 @@ NAME                            = philo
 
 SRCS_FILES                      += $(addprefix $(SRCS_DIR), main.c)
 SRCS_FILES                      += $(addprefix $(SRCS_PARSE_DIR), arguments.c)
-SRCS_FILES                      += $(addprefix $(SRCS_ROUTINE_DIR), info.c \
-								   routine.c)
+SRCS_FILES                      += $(addprefix $(SRCS_ROUTINE_DIR), routine.c)
 SRCS_FILES                      += $(addprefix $(SRCS_HANDLER_DIR), handler_malloc.c \
 								   handler_mutex.c \
 								   handler_thread.c)
+SRCS_FILES                      += $(addprefix $(SRCS_INFO_DIR), info.c)
 SRCS_FILES                      += $(addprefix $(SRCS_MONITOR_DIR), fork.c \
 								   monitor.c \
 								   philo.c)

@@ -6,13 +6,13 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 05:31:57 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/13 12:19:36 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/15 12:56:37 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <unistd.h>
-#include "default.h"
+#include "utils/default.h"
 
 static size_t	ft_strlen(
 					char *s

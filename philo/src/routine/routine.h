@@ -6,14 +6,14 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 04:52:22 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/15 00:37:57 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/15 12:48:07 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ROUTINE_H
 # define ROUTINE_H
 
-# include "routine/info.h"
+# include "routine/info/info.h"
 # include "routine/monitor/monitor.h"
 
 typedef struct s_routine	t_routine;
