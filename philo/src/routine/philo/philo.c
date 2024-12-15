@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:51:30 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/15 18:43:08 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/15 19:11:29 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	philo_init(
 		(*philo + i)->must_eat = info.number_of_times_each_philosopher_must_eat;
 		status = handler_mutex(&(*philo + i)->mutex, INIT, status);
 	}
-	(void)info;
 	return (status);
 }
 
