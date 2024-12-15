@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 21:41:44 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/15 13:42:47 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/15 17:21:36 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,13 @@ struct s_fork
 };
 
 int		fork_init(
-			t_fork *fork,
+			t_fork **fork,
 			int nbr_philos,
 			int status
 			);
 
 void	fork_destroy(
-			t_fork *fork
+			t_fork **fork,
+			int nbr_philos
 			);
 #endif

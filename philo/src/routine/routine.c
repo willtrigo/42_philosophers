@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 07:18:28 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/15 13:42:22 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/15 18:40:27 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include "routine/philo/philo.h"
 #include "routine/routine.h"
 #include "utils/default.h"
+#include "utils/utils.h"
 
 t_routine	*rt(void)
 {
@@ -31,20 +32,18 @@ int	routine_init(
 	t_routine *rt,
 	int status
 ) {
-	int	i;
 	int	nbr_philos;
 
-	i = DEFAULT_INIT;
 	nbr_philos = DEFAULT;
 	status = info_init(argv, &rt->info, status);
 	if (status == EXIT_SUCCESS)
 	{
 		nbr_philos = rt->info.number_of_philosophers;
-		status = fork_init(rt->fork, nbr_philos, status);
+		status = fork_init(&rt->fork, nbr_philos, status);
+		if (status == EXIT_SUCCESS)
+			status = philo_init(&rt->philo, nbr_philos, rt->info, status);
 		if (status == EXIT_SUCCESS)
 			status = monitor_init(&rt->monitor, nbr_philos, status);
-		while (status == EXIT_SUCCESS && ++i < nbr_philos)
-			status = philo_init(rt->monitor.philo + i, i, rt->info, status);
 	}
 	return (status);
 }
@@ -53,7 +52,20 @@ int	routine_begin(
 	t_routine *rt,
 	int status
 ) {
+	int	i;
+
+	i = DEFAULT_INIT;
+	rt->monitor.begin_time = get_time();
 	status = handler_thread(&rt->monitor.thread, CREATE, monitor_run, rt);
+	while (status == EXIT_SUCCESS && ++i < rt->info.number_of_philosophers)
+	{
+		rt->philo[i].time_to_last_eat = rt->monitor.begin_time;
+		status = handler_thread(&rt->philo[i].thread, CREATE, \
+			philo_routine, &rt->philo[i]);
+	}
+	i = DEFAULT_INIT;
+	while (status == EXIT_SUCCESS && ++i < rt->info.number_of_philosophers)
+		status = handler_thread(&rt->philo[i].thread, JOIN, NULL, NULL);
 	if (status == EXIT_SUCCESS)
 		status = handler_thread(&rt->monitor.thread, JOIN, NULL, NULL);
 	return (status);
@@ -62,6 +74,7 @@ int	routine_begin(
 void	routine_destroy(
 	t_routine *rt
 ) {
-	fork_destroy(rt->fork);
+	fork_destroy(&rt->fork, rt->info.number_of_philosophers);
+	philo_destroy(&rt->philo, rt->info.number_of_philosophers);
 	monitor_destroy(&rt->monitor);
 }

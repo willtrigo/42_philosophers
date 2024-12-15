@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 18:35:06 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/15 01:27:47 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/15 18:21:56 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int	handler_thread(
 	if (type == CREATE)
 		status = handler_thread_create(pthread_create(th, NULL, func, arg));
 	else if (type == JOIN)
-		status = handler_thread_join(pthread_join(*th, &thread_return));
+		status = handler_thread_join(pthread_join(*(th), &thread_return));
 	else if (type == DETACH)
-		status = handler_thread_detach(pthread_detach(*th));
+		status = handler_thread_detach(pthread_detach(*(th)));
 	if (thread_return != NULL)
 		return (EXIT_FAILURE);
 	return (status);

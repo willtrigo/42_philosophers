@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:51:40 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/15 12:48:20 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/15 17:16:56 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ struct s_philo
 };
 
 int		philo_init(
-			t_philo *philo,
-			int i,
+			t_philo **philo,
+			int nbr_philos,
 			t_info info,
 			int status
 			);
@@ -39,4 +39,10 @@ int		philo_init(
 void	*philo_routine(
 			void *arg
 			);
+
+void	philo_destroy(
+			t_philo **philo,
+			int nbr_philos
+			);
+
 #endif
