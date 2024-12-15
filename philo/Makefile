@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/16 17:07:46 by dande-je          #+#    #+#              #
-#    Updated: 2024/12/15 00:26:37 by dande-je         ###   ########.fr        #
+#    Updated: 2024/12/15 03:06:06 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,9 +59,10 @@ SRCS_FILES                      += $(addprefix $(SRCS_HANDLER_DIR), handler_mall
 SRCS_FILES                      += $(addprefix $(SRCS_MONITOR_DIR), fork.c \
 								   monitor.c \
 								   philo.c)
-SRCS_FILES                      += $(addprefix $(SRCS_UTILS_DIR), output.c \
-								   ft_putendl_fd.c \
-								   ft_strtoll.c)
+SRCS_FILES                      += $(addprefix $(SRCS_UTILS_DIR), ft_putendl_fd.c \
+								   ft_strtoll.c \
+								   get_time.c \
+								   output.c)
 
 OBJS                            += $(SRCS_FILES:%.c=$(BUILD_DIR)%.o)
 

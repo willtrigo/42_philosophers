@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 11:53:17 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/15 00:23:14 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/15 03:23:42 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdbool.h>
 # include <pthread.h>
+# include "routine/handler/handler.h"
 # include "routine/monitor/fork.h"
 # include "routine/monitor/philo.h"
 
@@ -39,6 +40,14 @@ int		monitor_init(
 
 void	*monitor_run(
 			void *arg
+			);
+
+void	monitor_permission(
+			t_handler type
+			);
+
+void	monitor_log_permission(
+			t_handler type
 			);
 
 void	monitor_destroy(
