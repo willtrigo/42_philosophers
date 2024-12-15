@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 11:53:01 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/15 13:02:59 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/15 13:14:52 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "routine/handler/handler_mutex.h"
 #include "routine/handler/handler_thread.h"
 #include "routine/monitor/monitor.h"
-#include "routine/monitor/philo.h"
+#include "routine/philo/philo.h"
 #include "routine/routine.h"
 #include "utils/default.h"
 #include "utils/utils.h"

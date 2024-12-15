@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 11:53:17 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/15 13:03:09 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/15 13:14:41 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdbool.h>
 # include "routine/fork/fork.h"
 # include "routine/handler/handler.h"
-# include "routine/monitor/philo.h"
+# include "routine/philo/philo.h"
 
 typedef struct s_monitor	t_monitor;
 struct s_monitor
