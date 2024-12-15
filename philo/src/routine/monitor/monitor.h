@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 11:53:17 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/13 12:16:47 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/15 00:23:14 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ int		monitor_init(
 			t_monitor *monitor,
 			int nbr_philos,
 			int status
+			);
+
+void	*monitor_run(
+			void *arg
 			);
 
 void	monitor_destroy(

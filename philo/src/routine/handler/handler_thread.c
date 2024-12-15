@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 18:35:06 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/13 12:17:32 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/15 00:38:33 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,48 +14,46 @@
 #include <pthread.h>
 #include <stdlib.h>
 #include "routine/handler/handler.h"
-#include "routine/monitor/philo.h"
 #include "utils/default.h"
 #include "utils/utils.h"
 
 static int	handler_thread_create(
-				int thread_status,
-				int status
+				int thread_status
 				);
 
 static int	handler_thread_join(
-				int thread_status,
-				int status
+				int thread_status
 				);
 
 static int	handler_thread_detach(
-				int thread_status,
-				int status
+				int thread_status
 				);
 
 int	handler_thread(
-	t_philo *philo,
+	pthread_t *th,
 	t_handler type,
 	void *(*func)(void *),
-	int status
+	void *arg
 ) {
-	if (status == EXIT_SUCCESS && type == CREATE)
-		status = handler_thread_create(pthread_create(&philo->thread, NULL, \
-			func, philo), status);
-	else if (status == EXIT_SUCCESS && type == JOIN)
-		status = handler_thread_join(pthread_join(philo->thread, NULL), \
-			status);
-	else if (status == EXIT_SUCCESS && type == DETACH)
-		status = handler_thread_detach(pthread_detach(philo->thread), \
-			status);
+	int	status;
+
+	status = EXIT_SUCCESS;
+	if (type == CREATE)
+		status = handler_thread_create(pthread_create(th, NULL, func, arg));
+	else if (type == JOIN)
+		status = handler_thread_join(pthread_join(*th, NULL));
+	else if (type == DETACH)
+		status = handler_thread_detach(pthread_detach(*th));
 	return (status);
 }
 
 static int	handler_thread_create(
-				int thread_status,
-				int status
+				int thread_status
 ) {
-	if (status == EXIT_SUCCESS && thread_status != DEFAULT)
+	int	status;
+
+	status = EXIT_SUCCESS;
+	if (thread_status != DEFAULT)
 	{
 		if (thread_status == EAGAIN)
 			status = output_error("philo: thread create: " \
@@ -77,10 +75,12 @@ static int	handler_thread_create(
 }
 
 static int	handler_thread_join(
-				int thread_status,
-				int status
+				int thread_status
 ) {
-	if (status == EXIT_SUCCESS && thread_status != DEFAULT)
+	int	status;
+
+	status = EXIT_SUCCESS;
+	if (thread_status != DEFAULT)
 	{
 		if (thread_status == EDEADLK)
 			status = output_error("philo: thread join: " \
@@ -100,10 +100,12 @@ static int	handler_thread_join(
 }
 
 static int	handler_thread_detach(
-				int thread_status,
-				int status
+				int thread_status
 ) {
-	if (status == EXIT_SUCCESS && thread_status != DEFAULT)
+	int	status;
+
+	status = EXIT_SUCCESS;
+	if (thread_status != DEFAULT)
 	{
 		if (thread_status == EINVAL)
 			status = output_error("philo: thread detach: " \

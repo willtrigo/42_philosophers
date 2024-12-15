@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 04:52:22 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/13 12:45:41 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/15 00:37:57 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,14 @@ struct s_routine
 t_routine	*rt(void);
 
 int			routine_init(
-				char 		**argv,
-				t_routine	*rt,
-				int			status
+				char **argv,
+				t_routine *rt,
+				int status
+				);
+
+int			routine_begin(
+				t_routine *rt,
+				int status
 				);
 
 void		routine_destroy(

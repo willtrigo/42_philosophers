@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 03:17:03 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/13 12:11:46 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/15 00:25:30 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ void		ft_putendl_fd(
 				);
 
 int			output_error(
+				char *str
+				);
+
+int			output(
 				char *str
 				);
 

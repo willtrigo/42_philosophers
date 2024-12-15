@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 07:18:28 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/13 12:45:26 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/15 00:23:32 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "routine/monitor/fork.h"
 #include "routine/monitor/monitor.h"
 #include "routine/monitor/philo.h"
+#include "routine/handler/handler_thread.h"
 #include "utils/default.h"
 
 t_routine	*rt(void)
@@ -46,6 +47,16 @@ int	routine_init(
 		while (status == EXIT_SUCCESS && ++i < nbr_philos)
 			status = fork_init(rt->monitor.fork + i, status);
 	}
+	return (status);
+}
+
+int	routine_begin(
+	t_routine *rt,
+	int status
+) {
+	status = handler_thread(&rt->monitor.thread, CREATE, monitor_run, rt);
+	if (status == EXIT_SUCCESS)
+		status = handler_thread(&rt->monitor.thread, JOIN, NULL, NULL);
 	return (status);
 }
 

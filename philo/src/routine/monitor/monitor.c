@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 11:53:01 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/13 12:16:55 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/15 00:38:58 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include "routine/monitor/monitor.h"
 #include "routine/monitor/philo.h"
 #include "utils/default.h"
+#include "utils/utils.h"
 
 int	monitor_init(
 	t_monitor *monitor,
@@ -41,6 +42,14 @@ int	monitor_init(
 	if (handler_mutex(&monitor->mutex, INIT, status) != EXIT_SUCCESS)
 		return (EXIT_FAILURE);
 	return (status);
+}
+
+void	*monitor_run(
+	void *arg
+) {
+	(void)arg;
+	output("monitor alive");
+	return (NULL);
 }
 
 void	monitor_destroy(
