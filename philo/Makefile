@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/16 17:07:46 by dande-je          #+#    #+#              #
-#    Updated: 2024/12/13 12:10:32 by dande-je         ###   ########.fr        #
+#    Updated: 2024/12/15 00:26:37 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,11 +84,11 @@ COMP_MESSAGE                    = Building C object
 #******************************************************************************#
 
 CC                             := cc
-CFLAGS                         = -Wall -Wextra -Werror -Ofast
+CFLAGS                         = -Wall -Wextra -Werror -Ofast -pthread -Wunreachable-code -Wpedantic
 CPPFLAGS                       := $(addprefix -I,$(INCS)) -MMD -MP
-DFLAGS                         := -Wall -Wextra -Werror -g3
+DFLAGS                         := -Wall -Wextra -Werror -g3 -pthread
 LFLAGS                         := -march=native
-LDFLAGS                        := $(addprefix -L,$(dir $(LIBS)))
+LDFLAGS                        := $(addprefix -L,$(dir $(LIBS))) -pthread
 COMPILE_OBJS                   = $(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 COMPILE_EXE                    = $(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
 
