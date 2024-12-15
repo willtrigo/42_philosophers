@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 07:18:28 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/15 13:14:59 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/15 13:42:22 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,11 @@ int	routine_init(
 	if (status == EXIT_SUCCESS)
 	{
 		nbr_philos = rt->info.number_of_philosophers;
-		status = monitor_init(&rt->monitor, nbr_philos, status);
+		status = fork_init(rt->fork, nbr_philos, status);
+		if (status == EXIT_SUCCESS)
+			status = monitor_init(&rt->monitor, nbr_philos, status);
 		while (status == EXIT_SUCCESS && ++i < nbr_philos)
 			status = philo_init(rt->monitor.philo + i, i, rt->info, status);
-		i = DEFAULT_INIT;
-		while (status == EXIT_SUCCESS && ++i < nbr_philos)
-			status = fork_init(rt->monitor.fork + i, status);
 	}
 	return (status);
 }
@@ -63,5 +62,6 @@ int	routine_begin(
 void	routine_destroy(
 	t_routine *rt
 ) {
+	fork_destroy(rt->fork);
 	monitor_destroy(&rt->monitor);
 }

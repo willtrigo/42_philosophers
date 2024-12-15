@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 11:53:17 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/15 13:14:41 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/15 13:20:59 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <pthread.h>
 # include <stdbool.h>
-# include "routine/fork/fork.h"
 # include "routine/handler/handler.h"
 # include "routine/philo/philo.h"
 
@@ -26,7 +25,6 @@ struct s_monitor
 	int				wait_to_eat;
 	bool			death_philo;
 	t_philo			*philo;
-	t_fork			*fork;
 	pthread_mutex_t	log;
 	pthread_mutex_t	mutex;
 	pthread_t		thread;

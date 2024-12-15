@@ -6,13 +6,12 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 11:53:01 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/15 13:14:52 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/15 13:47:39 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include <stdlib.h>
-#include "routine/fork/fork.h"
 #include "routine/handler/handler.h"
 #include "routine/handler/handler_malloc.h"
 #include "routine/handler/handler_mutex.h"
@@ -34,10 +33,6 @@ int	monitor_init(
 	if (handler_malloc((void **)&monitor->philo, \
 		nbr_philos * sizeof(t_philo), status, \
 		"philo: malloc: fail to init philo malloc") != EXIT_SUCCESS)
-		return (EXIT_FAILURE);
-	if (handler_malloc((void **)&monitor->fork, \
-		nbr_philos * sizeof(t_fork), status, \
-		"philo: malloc: fail to init fork malloc") != EXIT_SUCCESS)
 		return (EXIT_FAILURE);
 	if (handler_mutex(&monitor->log, INIT, status) != EXIT_SUCCESS)
 		return (EXIT_FAILURE);
@@ -99,6 +94,4 @@ void	monitor_destroy(
 ) {
 	if (monitor->philo)
 		free(monitor->philo);
-	if (monitor->fork)
-		free(monitor->fork);
 }
