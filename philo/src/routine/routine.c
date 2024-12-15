@@ -6,14 +6,14 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 07:18:28 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/15 12:55:59 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/15 13:02:38 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "routine/fork/fork.h"
 #include "routine/handler/handler_thread.h"
 #include "routine/info/info.h"
-#include "routine/monitor/fork.h"
 #include "routine/monitor/monitor.h"
 #include "routine/monitor/philo.h"
 #include "routine/routine.h"

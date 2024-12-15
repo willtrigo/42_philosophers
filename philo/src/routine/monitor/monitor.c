@@ -6,17 +6,17 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 11:53:01 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/15 05:15:46 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/15 13:02:59 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include <stdlib.h>
+#include "routine/fork/fork.h"
 #include "routine/handler/handler.h"
 #include "routine/handler/handler_malloc.h"
 #include "routine/handler/handler_mutex.h"
 #include "routine/handler/handler_thread.h"
-#include "routine/monitor/fork.h"
 #include "routine/monitor/monitor.h"
 #include "routine/monitor/philo.h"
 #include "routine/routine.h"
