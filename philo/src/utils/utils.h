@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 03:17:03 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/15 04:01:33 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/16 12:14:17 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int			output_error(
 
 int			output(
 				int philo_id,
-				long long last_meal,
+				long long output_time,
 				char *str
 				);
 

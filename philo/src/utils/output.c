@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 05:30:33 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/15 04:02:55 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/16 12:14:30 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	output_error(
 
 int	output(
 	int philo_id,
-	long long last_meal,
+	long long output_time,
 	char *str
 ) {
-	printf("%lld %d %s\n", get_time() - last_meal, philo_id, str);
+	printf("%lld %d %s\n", get_time() - output_time, philo_id, str);
 	return (EXIT_SUCCESS);
 }

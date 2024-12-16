@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:51:40 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/15 17:16:56 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/16 11:43:42 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ struct s_philo
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				must_eat;
+	int				right_hand;
+	int				left_hand;
 	pthread_t		thread;
 	pthread_mutex_t	mutex;
 };

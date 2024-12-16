@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 11:53:01 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/15 18:41:19 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/16 14:16:54 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 #include "routine/monitor/monitor.h"
 #include "routine/routine.h"
 #include "utils/default.h"
+
+static bool	is_death_philo(t_routine *rt);
 
 int	monitor_init(
 	t_monitor *monitor,
@@ -42,32 +44,19 @@ void	*monitor_run(
 
 	rt = (t_routine *)arg;
 	status = EXIT_SUCCESS;
-	monitor_permission(LOCK);
-	monitor_log_permission(LOCK);
-	(void)rt;
-	monitor_permission(UNLOCK);
-	monitor_log_permission(UNLOCK);
+	while (WAIT)
+	{
+		monitor_permission(LOCK);
+		monitor_log_permission(LOCK);
+		if (is_death_philo(rt))
+			break ;
+		monitor_log_permission(UNLOCK);
+		monitor_permission(UNLOCK);
+		usleep(MS_PER_SEC);
+	}
 	if (status == EXIT_FAILURE)
 		return ((void *)EXIT_FAILURE);
 	return (NULL);
-}
-
-void	monitor_permission(
-	t_handler type
-) {
-	if (type == LOCK)
-		handler_mutex(&rt()->monitor.mutex, LOCK, EXIT_SUCCESS);
-	if (type == UNLOCK)
-		handler_mutex(&rt()->monitor.mutex, UNLOCK, EXIT_SUCCESS);
-}
-
-void	monitor_log_permission(
-	t_handler type
-) {
-	if (type == LOCK)
-		handler_mutex(&rt()->monitor.log, LOCK, EXIT_SUCCESS);
-	if (type == UNLOCK)
-		handler_mutex(&rt()->monitor.log, UNLOCK, EXIT_SUCCESS);
 }
 
 void	monitor_destroy(
@@ -79,4 +68,11 @@ void	monitor_destroy(
 	status = handler_mutex(&monitor->mutex, DESTROY, status);
 	if (status == EXIT_SUCCESS)
 		status = handler_mutex(&monitor->log, DESTROY, status);
+}
+
+static bool	is_death_philo(t_routine *rt)
+{
+	if (rt->monitor.death_philo)
+		return (true);
+	return (false);
 }

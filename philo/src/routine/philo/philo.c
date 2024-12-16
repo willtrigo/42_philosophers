@@ -6,13 +6,14 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:51:30 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/15 19:11:29 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/16 14:21:10 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include "routine/fork/fork.h"
 #include "routine/handler/handler.h"
 #include "routine/handler/handler_malloc.h"
 #include "routine/handler/handler_mutex.h"
@@ -20,7 +21,6 @@
 #include "routine/monitor/monitor.h"
 #include "routine/philo/philo.h"
 #include "utils/default.h"
-#include "utils/utils.h"
 
 int	philo_init(
 	t_philo **philo,
@@ -44,6 +44,8 @@ int	philo_init(
 		(*philo + i)->time_to_eat = info.time_to_eat;
 		(*philo + i)->time_to_sleep = info.time_to_sleep;
 		(*philo + i)->must_eat = info.number_of_times_each_philosopher_must_eat;
+		(*philo + i)->right_hand = DEFAULT_INIT;
+		(*philo + i)->left_hand = DEFAULT_INIT;
 		status = handler_mutex(&(*philo + i)->mutex, INIT, status);
 	}
 	return (status);
@@ -60,7 +62,7 @@ void	*philo_routine(
 	handler_mutex(&philo->mutex, LOCK, EXIT_SUCCESS);
 	monitor_permission(LOCK);
 	monitor_log_permission(LOCK);
-	output(philo->id, philo->time_to_last_eat, "philo alive");
+	take_forks(philo);
 	monitor_log_permission(UNLOCK);
 	monitor_permission(UNLOCK);
 	handler_mutex(&philo->mutex, UNLOCK, EXIT_SUCCESS);
