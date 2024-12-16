@@ -6,11 +6,12 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 11:53:01 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/16 14:39:48 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/16 18:34:39 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include "routine/handler/handler.h"
@@ -45,12 +46,8 @@ void	*monitor_routine(
 	status = EXIT_SUCCESS;
 	while (WAIT)
 	{
-		monitor_permission(LOCK);
-		monitor_log_permission(LOCK);
 		if (is_death_philo(rt))
 			break ;
-		monitor_log_permission(UNLOCK);
-		monitor_permission(UNLOCK);
 		usleep(MS_PER_SEC);
 	}
 	if (status == EXIT_FAILURE)

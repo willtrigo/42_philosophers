@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 21:41:34 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/16 12:10:16 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/16 18:51:24 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,9 @@ static int	take_fork(void)
 	{
 		if (rt()->fork[i].is_available)
 		{
-			rt()->fork[i].is_available = false;
 			handler_mutex(&rt()->fork[i].mutex, LOCK, EXIT_SUCCESS);
+			rt()->fork[i].is_available = false;
+			handler_mutex(&rt()->fork[i].mutex, UNLOCK, EXIT_SUCCESS);
 			return (i);
 		}
 	}

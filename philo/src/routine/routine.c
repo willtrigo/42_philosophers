@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 07:18:28 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/16 14:41:09 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/16 19:38:40 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,21 @@ int	routine_begin(
 	t_routine *rt,
 	int status
 ) {
-	int	i;
+	int			i;
+	long long	current_time;
 
 	i = DEFAULT_INIT;
-	rt->monitor.begin_time = get_time();
-	status = handler_thread(&rt->monitor.thread, CREATE, monitor_routine, rt);
+	current_time = get_time();
+	rt->monitor.begin_time = current_time;
 	while (status == EXIT_SUCCESS && ++i < rt->info.number_of_philosophers)
 	{
-		rt->philo[i].time_to_last_eat = rt->monitor.begin_time;
+		rt->philo[i].time_to_last_eat = current_time;
 		status = handler_thread(&rt->philo[i].thread, CREATE, \
 			philo_routine, &rt->philo[i]);
 	}
+	if (status == EXIT_SUCCESS)
+		status = handler_thread(&rt->monitor.thread, CREATE, \
+			monitor_routine, rt);
 	i = DEFAULT_INIT;
 	while (status == EXIT_SUCCESS && ++i < rt->info.number_of_philosophers)
 		status = handler_thread(&rt->philo[i].thread, JOIN, NULL, NULL);

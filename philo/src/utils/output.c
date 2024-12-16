@@ -6,13 +6,14 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 05:30:33 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/16 12:14:30 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/16 18:51:55 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include "routine/monitor/monitor.h"
 #include "utils/utils.h"
 
 int	output_error(

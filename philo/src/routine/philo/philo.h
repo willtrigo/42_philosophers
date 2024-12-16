@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:51:40 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/16 11:43:42 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/16 15:51:42 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define PHILO_H
 
 # include <pthread.h>
+# include <stdbool.h>
+# include "routine/handler/handler.h"
 # include "routine/info/info.h"
 
 typedef struct s_philo	t_philo;
@@ -27,6 +29,7 @@ struct s_philo
 	int				must_eat;
 	int				right_hand;
 	int				left_hand;
+	bool			is_dead;
 	pthread_t		thread;
 	pthread_mutex_t	mutex;
 };
@@ -40,6 +43,11 @@ int		philo_init(
 
 void	*philo_routine(
 			void *arg
+			);
+
+void	philo_permission(
+			t_handler type,
+			int id
 			);
 
 void	philo_destroy(

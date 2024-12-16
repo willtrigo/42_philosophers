@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:51:30 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/16 14:21:10 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/16 19:38:00 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include "routine/info/info.h"
 #include "routine/monitor/monitor.h"
 #include "routine/philo/philo.h"
+#include "routine/philo/philo_internal.h"
 #include "utils/default.h"
 
 int	philo_init(
@@ -46,6 +47,7 @@ int	philo_init(
 		(*philo + i)->must_eat = info.number_of_times_each_philosopher_must_eat;
 		(*philo + i)->right_hand = DEFAULT_INIT;
 		(*philo + i)->left_hand = DEFAULT_INIT;
+		(*philo + i)->is_dead = false;
 		status = handler_mutex(&(*philo + i)->mutex, INIT, status);
 	}
 	return (status);
@@ -59,13 +61,19 @@ void	*philo_routine(
 
 	status = EXIT_SUCCESS;
 	philo = (t_philo *)arg;
-	handler_mutex(&philo->mutex, LOCK, EXIT_SUCCESS);
-	monitor_permission(LOCK);
-	monitor_log_permission(LOCK);
-	take_forks(philo);
-	monitor_log_permission(UNLOCK);
+	while (WAIT)
+	{
+		philo_permission(LOCK, philo->id - NORMALIZE_PHILO);
+		monitor_permission(LOCK);
+		if (!is_philo_alive(philo))
+			break ;
+		take_forks(philo);
+		monitor_permission(UNLOCK);
+		philo_permission(UNLOCK, philo->id - NORMALIZE_PHILO);
+		usleep(MS_PER_SEC);
+	}
 	monitor_permission(UNLOCK);
-	handler_mutex(&philo->mutex, UNLOCK, EXIT_SUCCESS);
+	philo_permission(UNLOCK, philo->id - NORMALIZE_PHILO);
 	if (status == EXIT_FAILURE)
 		return ((void *)EXIT_FAILURE);
 	return (NULL);
