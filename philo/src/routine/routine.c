@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 07:18:28 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/15 18:40:27 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/16 14:41:09 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	routine_begin(
 
 	i = DEFAULT_INIT;
 	rt->monitor.begin_time = get_time();
-	status = handler_thread(&rt->monitor.thread, CREATE, monitor_run, rt);
+	status = handler_thread(&rt->monitor.thread, CREATE, monitor_routine, rt);
 	while (status == EXIT_SUCCESS && ++i < rt->info.number_of_philosophers)
 	{
 		rt->philo[i].time_to_last_eat = rt->monitor.begin_time;

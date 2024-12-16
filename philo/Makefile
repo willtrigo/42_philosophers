@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/16 17:07:46 by dande-je          #+#    #+#              #
-#    Updated: 2024/12/16 14:34:13 by dande-je         ###   ########.fr        #
+#    Updated: 2024/12/16 14:40:04 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,7 @@ SRCS_FILES                      += $(addprefix $(SRCS_HANDLER_DIR), handler_mall
 SRCS_FILES                      += $(addprefix $(SRCS_INFO_DIR), info.c)
 SRCS_FILES                      += $(addprefix $(SRCS_MONITOR_DIR), monitor.c \
 								   monitor_permission.c \
-								   monitor_routine.c)
+								   monitor_routines.c)
 SRCS_FILES                      += $(addprefix $(SRCS_PHILO_DIR), philo.c)
 SRCS_FILES                      += $(addprefix $(SRCS_UTILS_DIR), ft_putendl_fd.c \
 								   ft_strtoll.c \

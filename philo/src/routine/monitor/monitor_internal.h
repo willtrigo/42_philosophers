@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 14:28:11 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/16 14:29:46 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/16 14:39:32 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,5 @@
 # include "routine/routine.h"
 
 bool	is_death_philo(t_routine *rt);
+
 #endif
