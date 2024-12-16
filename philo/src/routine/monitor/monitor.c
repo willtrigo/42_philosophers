@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 11:53:01 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/16 14:16:54 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/16 14:31:57 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@
 #include "routine/handler/handler.h"
 #include "routine/handler/handler_mutex.h"
 #include "routine/monitor/monitor.h"
+#include "routine/monitor/monitor_internal.h"
 #include "routine/routine.h"
 #include "utils/default.h"
-
-static bool	is_death_philo(t_routine *rt);
 
 int	monitor_init(
 	t_monitor *monitor,
@@ -68,11 +67,4 @@ void	monitor_destroy(
 	status = handler_mutex(&monitor->mutex, DESTROY, status);
 	if (status == EXIT_SUCCESS)
 		status = handler_mutex(&monitor->log, DESTROY, status);
-}
-
-static bool	is_death_philo(t_routine *rt)
-{
-	if (rt->monitor.death_philo)
-		return (true);
-	return (false);
 }
