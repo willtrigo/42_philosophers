@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:51:30 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/17 11:27:14 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/17 13:28:34 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,16 @@ void	*philo_routine(
 	philo = (t_philo *)arg;
 	while (monitor_state(GET, DEFAULT))
 	{
-		if (philo->must_eat && (philo->right_hand == DEFAULT_INIT \
-			|| philo->left_hand == DEFAULT_INIT))
-			take_forks(philo);
-		if (philo->must_eat && philo->right_hand != DEFAULT_INIT \
-			&& philo->left_hand != DEFAULT_INIT)
-			philo_eat(philo);
-		usleep(100);
+		if (philo->must_eat != DEFAULT)
+		{
+			if (!philo->is_full && (philo->right_hand == DEFAULT_INIT \
+				|| philo->left_hand == DEFAULT_INIT))
+				take_forks(philo);
+			if (!philo->is_full && philo->right_hand != DEFAULT_INIT \
+				&& philo->left_hand != DEFAULT_INIT)
+				philo_eat(philo);
+		}
+		usleep(MS_PER_SEC);
 	}
 	if (status == EXIT_FAILURE)
 		return ((void *)EXIT_FAILURE);

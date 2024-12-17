@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 11:53:17 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/16 20:23:30 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/17 15:50:13 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ struct s_monitor
 	_Atomic long long	begin_time;
 	_Atomic int			wait_to_eat;
 	_Atomic int			state;
+	// _Atomic int			forks_available;
 	pthread_mutex_t		log;
 	pthread_mutex_t		mutex;
 	pthread_t			thread;
