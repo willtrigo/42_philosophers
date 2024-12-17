@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:51:30 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/17 13:28:34 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/17 16:54:04 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	*philo_routine(
 				&& philo->left_hand != DEFAULT_INIT)
 				philo_eat(philo);
 		}
-		usleep(MS_PER_SEC);
+		usleep(MS_DEFAULT);
 	}
 	if (status == EXIT_FAILURE)
 		return ((void *)EXIT_FAILURE);

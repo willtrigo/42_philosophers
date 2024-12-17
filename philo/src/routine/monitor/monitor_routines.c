@@ -6,12 +6,11 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 14:28:43 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/17 16:10:29 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/17 16:49:42 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
-#include <stdio.h>
 #include "routine/handler/handler.h"
 #include "routine/monitor/monitor.h"
 #include "routine/philo/philo.h"
@@ -31,7 +30,7 @@ bool	is_philos_must_eat(
 	const int	nbr_philos = rt->info.number_of_philosophers;
 	int			must_eat;
 	int			philos_satisfied;
-	int			philos_full;
+	bool		philos_full;
 
 	philos_satisfied = DEFAULT;
 	philos_full = false;
@@ -44,7 +43,9 @@ bool	is_philos_must_eat(
 			philos_satisfied++;
 		if (philos_full && philos_satisfied == nbr_philos)
 		{
+			monitor_permission(LOCK);
 			rt->monitor.state = false;
+			monitor_permission(UNLOCK);
 			return (false);
 		}
 	}
@@ -87,7 +88,6 @@ static bool	is_philos_full(
 			rt->philo[i].is_full = false;
 			philo_permission(UNLOCK, i);
 		}
-		printf("%d philos full\n", philos_full);
 		return (true);
 	}
 	return (false);
