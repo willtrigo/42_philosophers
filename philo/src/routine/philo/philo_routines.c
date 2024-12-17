@@ -6,26 +6,24 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 14:45:41 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/16 19:39:01 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/17 11:26:21 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
+#include <unistd.h>
+#include "routine/fork/fork.h"
 #include "routine/philo/philo.h"
-#include "utils/default.h"
 #include "utils/utils.h"
 
-bool	is_philo_alive(
+void	philo_eat(
 	t_philo *philo
 ) {
-	long long	current_time;
+	const long long	current_time = get_time();
 
-	if (philo->is_dead)
-		return (false);
-	current_time = (get_time() - philo->time_to_last_eat) * MS_PER_SEC;
-	if (current_time <= philo->time_to_die)
-		return (true);
-	philo->is_dead = true;
-	output(philo->id, get_time(), "died");
-	return (false);
+	output(philo->id, current_time, "is eating");
+	philo->must_eat = false;
+	philo->time_to_last_eat = current_time + philo->time_to_eat;
+	usleep(philo->time_to_eat);
+	drop_forks(philo);
 }

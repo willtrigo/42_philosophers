@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 03:00:37 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/15 03:04:47 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/17 10:04:40 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ long long	get_time(void)
 	long long		time;
 
 	gettimeofday(&tv, NULL);
-	time = (tv.tv_sec * MS_PER_SEC) + (tv.tv_sec / MS_PER_SEC);
+	time = (tv.tv_sec * MS_PER_SEC) + (tv.tv_usec / MS_PER_SEC);
 	return (time);
 }

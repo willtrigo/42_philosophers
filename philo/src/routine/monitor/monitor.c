@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 11:53:01 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/16 18:34:39 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/17 10:49:11 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include "routine/monitor/monitor_internal.h"
 #include "routine/routine.h"
 #include "utils/default.h"
+#include "utils/utils.h"
 
 int	monitor_init(
 	t_monitor *monitor,
@@ -27,7 +28,7 @@ int	monitor_init(
 	int status
 ) {
 	monitor->wait_to_eat = nbr_philos;
-	monitor->death_philo = false;
+	monitor->state = true;
 	monitor->begin_time = DEFAULT;
 	if (handler_mutex(&monitor->log, INIT, status) != EXIT_SUCCESS)
 		return (EXIT_FAILURE);
@@ -41,18 +42,37 @@ void	*monitor_routine(
 ) {
 	t_routine	*rt;
 	int			status;
+	int			i;
+	long long	current_time;
 
 	rt = (t_routine *)arg;
 	status = EXIT_SUCCESS;
-	while (WAIT)
+	while (monitor_state(GET, DEFAULT))
 	{
-		if (is_death_philo(rt))
+		i = DEFAULT_INIT;
+		if (!is_philos_must_eat(rt))
 			break ;
-		usleep(MS_PER_SEC);
+		current_time = get_time();
+		while (++i < rt->info.number_of_philosophers)
+			if (is_philo_death(rt, current_time, i))
+				return (NULL);
 	}
 	if (status == EXIT_FAILURE)
 		return ((void *)EXIT_FAILURE);
 	return (NULL);
+}
+
+bool	monitor_state(
+	int type,
+	int value
+) {
+	if (type == SET)
+	{
+		monitor_permission(LOCK);
+		rt()->monitor.state = value;
+		monitor_permission(UNLOCK);
+	}
+	return (rt()->monitor.state);
 }
 
 void	monitor_destroy(

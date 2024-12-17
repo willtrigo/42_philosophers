@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 14:45:31 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/16 15:31:45 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/17 10:21:09 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ enum e_default_philo
 	NORMALIZE_PHILO = 1,
 };
 
-bool	is_philo_alive(
+void	philo_eat(
 			t_philo *philo
 			);
 

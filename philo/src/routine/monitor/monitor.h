@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 11:53:17 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/16 14:40:44 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/16 20:23:30 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@
 typedef struct s_monitor	t_monitor;
 struct s_monitor
 {
-	long long		begin_time;
-	int				wait_to_eat;
-	bool			death_philo;
-	pthread_mutex_t	log;
-	pthread_mutex_t	mutex;
-	pthread_t		thread;
+	_Atomic long long	begin_time;
+	_Atomic int			wait_to_eat;
+	_Atomic int			state;
+	pthread_mutex_t		log;
+	pthread_mutex_t		mutex;
+	pthread_t			thread;
 };
 
 int		monitor_init(
@@ -36,6 +36,11 @@ int		monitor_init(
 
 void	*monitor_routine(
 			void *arg
+			);
+
+bool	monitor_state(
+			int type,
+			int value
 			);
 
 void	monitor_permission(

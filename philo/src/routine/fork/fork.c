@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 21:41:34 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/16 18:51:24 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/17 11:25:58 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,30 @@ int	fork_init(
 int	take_forks(
 	t_philo *philo
 ) {
+	const long long	current_time = get_time();
+
 	if (philo->right_hand == DEFAULT_INIT)
 	{
 		philo->right_hand = take_fork();
 		if (philo->right_hand != DEFAULT_INIT)
-			output(philo->id, get_time(), "has taken a fork");
+			output(philo->id, current_time, "has taken a fork");
 	}
 	if (philo->left_hand == DEFAULT_INIT)
 	{
 		philo->left_hand = take_fork();
 		if (philo->left_hand != DEFAULT_INIT)
-			output(philo->id, get_time(), "has taken a fork");
+			output(philo->id, current_time, "has taken a fork");
 	}
 	return (EXIT_SUCCESS);
+}
+
+void	drop_forks(
+	t_philo *philo
+) {
+	handler_mutex(&rt()->fork[philo->right_hand].mutex, UNLOCK, EXIT_SUCCESS);
+	philo->right_hand = DEFAULT_INIT;
+	handler_mutex(&rt()->fork[philo->left_hand].mutex, UNLOCK, EXIT_SUCCESS);
+	philo->left_hand = DEFAULT_INIT;
 }
 
 void	fork_destroy(

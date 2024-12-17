@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:51:40 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/16 15:51:42 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/17 09:50:56 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@
 typedef struct s_philo	t_philo;
 struct s_philo
 {
-	long long		time_to_last_eat;
-	int				id;
-	int				time_to_die;
-	int				time_to_eat;
-	int				time_to_sleep;
-	int				must_eat;
-	int				right_hand;
-	int				left_hand;
-	bool			is_dead;
-	pthread_t		thread;
-	pthread_mutex_t	mutex;
+	_Atomic long long	time_to_last_eat;
+	_Atomic int			must_eat;
+	_Atomic int			is_full;
+	int					id;
+	_Atomic int			time_to_die;
+	_Atomic int			time_to_eat;
+	_Atomic int			time_to_sleep;
+	int					right_hand;
+	int					left_hand;
+	pthread_t			thread;
+	pthread_mutex_t		mutex;
 };
 
 int		philo_init(

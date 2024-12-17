@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:51:30 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/16 19:38:00 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/17 11:27:14 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 #include "routine/handler/handler_malloc.h"
 #include "routine/handler/handler_mutex.h"
 #include "routine/info/info.h"
-#include "routine/monitor/monitor.h"
 #include "routine/philo/philo.h"
+#include "routine/monitor/monitor.h"
 #include "routine/philo/philo_internal.h"
 #include "utils/default.h"
 
@@ -47,7 +47,7 @@ int	philo_init(
 		(*philo + i)->must_eat = info.number_of_times_each_philosopher_must_eat;
 		(*philo + i)->right_hand = DEFAULT_INIT;
 		(*philo + i)->left_hand = DEFAULT_INIT;
-		(*philo + i)->is_dead = false;
+		(*philo + i)->is_full = false;
 		status = handler_mutex(&(*philo + i)->mutex, INIT, status);
 	}
 	return (status);
@@ -61,19 +61,16 @@ void	*philo_routine(
 
 	status = EXIT_SUCCESS;
 	philo = (t_philo *)arg;
-	while (WAIT)
+	while (monitor_state(GET, DEFAULT))
 	{
-		philo_permission(LOCK, philo->id - NORMALIZE_PHILO);
-		monitor_permission(LOCK);
-		if (!is_philo_alive(philo))
-			break ;
-		take_forks(philo);
-		monitor_permission(UNLOCK);
-		philo_permission(UNLOCK, philo->id - NORMALIZE_PHILO);
-		usleep(MS_PER_SEC);
+		if (philo->must_eat && (philo->right_hand == DEFAULT_INIT \
+			|| philo->left_hand == DEFAULT_INIT))
+			take_forks(philo);
+		if (philo->must_eat && philo->right_hand != DEFAULT_INIT \
+			&& philo->left_hand != DEFAULT_INIT)
+			philo_eat(philo);
+		usleep(100);
 	}
-	monitor_permission(UNLOCK);
-	philo_permission(UNLOCK, philo->id - NORMALIZE_PHILO);
 	if (status == EXIT_FAILURE)
 		return ((void *)EXIT_FAILURE);
 	return (NULL);
