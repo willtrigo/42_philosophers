@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/16 17:07:46 by dande-je          #+#    #+#              #
-#    Updated: 2024/12/16 15:33:12 by dande-je         ###   ########.fr        #
+#    Updated: 2024/12/18 10:00:05 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,8 @@ SRCS_FILES                      += $(addprefix $(SRCS_HANDLER_DIR), handler_mall
 SRCS_FILES                      += $(addprefix $(SRCS_INFO_DIR), info.c)
 SRCS_FILES                      += $(addprefix $(SRCS_MONITOR_DIR), monitor.c \
 								   monitor_permission.c \
-								   monitor_routines.c)
+								   monitor_routines.c \
+								   monitor_shared_data.c)
 SRCS_FILES                      += $(addprefix $(SRCS_PHILO_DIR), philo.c \
 								   philo_permission.c \
 								   philo_routines.c)
@@ -94,7 +95,7 @@ COMP_MESSAGE                    = Building C object
 CC                             := cc
 CFLAGS                         = -Wall -Wextra -Werror -Ofast -pthread -Wunreachable-code -Wpedantic
 CPPFLAGS                       := $(addprefix -I,$(INCS)) -MMD -MP
-DFLAGS                         := -Wall -Wextra -Werror -g3 -pthread
+DFLAGS                         := -Wall -Wextra -Werror -g3 -pthread -fsanitize=thread
 LFLAGS                         := -march=native
 LDFLAGS                        := $(addprefix -L,$(dir $(LIBS))) -pthread
 COMPILE_OBJS                   = $(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@

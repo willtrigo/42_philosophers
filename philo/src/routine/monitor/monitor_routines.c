@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 14:28:43 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/17 22:45:06 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/18 09:29:13 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ bool	is_philos_must_eat(
 	if (must_eat != DEFAULT_INIT)
 	{
 		is_philos_full(rt, DEFAULT, DEFAULT_INIT);
-		while (philos_satisfied < must_eat \
+		while (philos_satisfied < nbr_philos \
 			&& rt->philo[philos_satisfied].must_eat == DEFAULT)
 			philos_satisfied++;
 		if (philos_satisfied == nbr_philos)

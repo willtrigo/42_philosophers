@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 11:53:01 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/17 23:43:05 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/18 09:47:27 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,34 +60,6 @@ void	*monitor_routine(
 	if (status == EXIT_FAILURE)
 		return ((void *)EXIT_FAILURE);
 	return (NULL);
-}
-
-int	monitor_wait_to_eat(
-	int type
-) {
-	if (type == SET)
-	{
-		if (rt()->monitor.wait_to_eat != DEFAULT_INIT)
-		{
-			monitor_permission(LOCK);
-			rt()->monitor.wait_to_eat--;
-			monitor_permission(UNLOCK);
-		}
-	}
-	return (rt()->monitor.wait_to_eat);
-}
-
-bool	monitor_state(
-	int type,
-	int value
-) {
-	if (type == SET)
-	{
-		monitor_permission(LOCK);
-		rt()->monitor.state = value;
-		monitor_permission(UNLOCK);
-	}
-	return (rt()->monitor.state);
 }
 
 void	monitor_destroy(

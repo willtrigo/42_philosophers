@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:51:30 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/17 23:30:25 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/18 08:08:52 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ int	philo_init(
 		(*philo + i)->time_to_eat = info.time_to_eat;
 		(*philo + i)->time_to_sleep = info.time_to_sleep;
 		(*philo + i)->must_eat = info.number_of_times_each_philosopher_must_eat;
-		if ((*philo + i)->must_eat != DEFAULT_INIT)
-			(*philo + i)->must_eat++;
 		(*philo + i)->right_hand = DEFAULT_INIT;
 		(*philo + i)->left_hand = DEFAULT_INIT;
 		(*philo + i)->is_full = false;
