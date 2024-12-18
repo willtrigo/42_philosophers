@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 11:53:17 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/17 15:50:13 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/17 23:42:32 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ struct s_monitor
 	_Atomic long long	begin_time;
 	_Atomic int			wait_to_eat;
 	_Atomic int			state;
-	// _Atomic int			forks_available;
 	pthread_mutex_t		log;
 	pthread_mutex_t		mutex;
 	pthread_t			thread;
@@ -31,12 +30,16 @@ struct s_monitor
 
 int		monitor_init(
 			t_monitor *monitor,
-			int nbr_philos,
+			int wait_to_eat,
 			int status
 			);
 
 void	*monitor_routine(
 			void *arg
+			);
+
+int		monitor_wait_to_eat(
+			int type
 			);
 
 bool	monitor_state(

@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 21:41:34 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/17 16:12:30 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/17 18:29:15 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ static int	take_fork(void)
 			handler_mutex(&rt()->fork[DEFAULT].mutex, UNLOCK, EXIT_SUCCESS);
 			return (DEFAULT);
 		}
+		return (DEFAULT_INIT);
 	}
 	while (DEFAULT_BEGIN && ++i < rt()->info.number_of_philosophers)
 	{

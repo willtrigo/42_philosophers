@@ -6,10 +6,11 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:51:30 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/17 16:54:04 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/17 23:30:25 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
@@ -22,6 +23,11 @@
 #include "routine/monitor/monitor.h"
 #include "routine/philo/philo_internal.h"
 #include "utils/default.h"
+
+static bool	philo_is_able(
+				t_philo *philo,
+				int validation_type
+				);
 
 int	philo_init(
 	t_philo **philo,
@@ -45,6 +51,8 @@ int	philo_init(
 		(*philo + i)->time_to_eat = info.time_to_eat;
 		(*philo + i)->time_to_sleep = info.time_to_sleep;
 		(*philo + i)->must_eat = info.number_of_times_each_philosopher_must_eat;
+		if ((*philo + i)->must_eat != DEFAULT_INIT)
+			(*philo + i)->must_eat++;
 		(*philo + i)->right_hand = DEFAULT_INIT;
 		(*philo + i)->left_hand = DEFAULT_INIT;
 		(*philo + i)->is_full = false;
@@ -63,14 +71,18 @@ void	*philo_routine(
 	philo = (t_philo *)arg;
 	while (monitor_state(GET, DEFAULT))
 	{
-		if (philo->must_eat != DEFAULT)
+		if (!philo->is_full && philo->must_eat != DEFAULT)
 		{
-			if (!philo->is_full && (philo->right_hand == DEFAULT_INIT \
-				|| philo->left_hand == DEFAULT_INIT))
+			if (philo_is_able(philo, EQUAL))
 				take_forks(philo);
-			if (!philo->is_full && philo->right_hand != DEFAULT_INIT \
-				&& philo->left_hand != DEFAULT_INIT)
+			if (((monitor_wait_to_eat(GET) == DEFAULT_INIT) \
+				|| (monitor_wait_to_eat(GET) > DEFAULT)) && \
+				philo_is_able(philo, DIFF))
+			{
 				philo_eat(philo);
+				philo_sleep(philo);
+				philo_think(philo);
+			}
 		}
 		usleep(MS_DEFAULT);
 	}
@@ -94,4 +106,23 @@ void	philo_destroy(
 	}
 	if (*philo)
 		free(*philo);
+}
+
+static bool	philo_is_able(
+	t_philo *philo,
+	int validation_type
+) {
+	if (validation_type == EQUAL)
+	{
+		if (philo->right_hand == DEFAULT_INIT \
+			|| philo->left_hand == DEFAULT_INIT)
+			return (true);
+	}
+	else
+	{
+		if (philo->right_hand != DEFAULT_INIT \
+			&& philo->left_hand != DEFAULT_INIT)
+			return (true);
+	}
+	return (false);
 }

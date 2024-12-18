@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 11:53:01 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/17 16:51:45 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/17 23:43:05 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
 
 int	monitor_init(
 	t_monitor *monitor,
-	int nbr_philos,
+	int wait_to_eat,
 	int status
 ) {
-	monitor->wait_to_eat = nbr_philos;
+	monitor->wait_to_eat = wait_to_eat;
 	monitor->state = true;
 	monitor->begin_time = DEFAULT;
 	if (handler_mutex(&monitor->log, INIT, status) != EXIT_SUCCESS)
@@ -55,11 +55,26 @@ void	*monitor_routine(
 		while (++i < rt->info.number_of_philosophers)
 			if (is_philo_death(rt, current_time, i))
 				return (NULL);
-		usleep(MS_PER_SEC);
+		usleep(MS_DEFAULT);
 	}
 	if (status == EXIT_FAILURE)
 		return ((void *)EXIT_FAILURE);
 	return (NULL);
+}
+
+int	monitor_wait_to_eat(
+	int type
+) {
+	if (type == SET)
+	{
+		if (rt()->monitor.wait_to_eat != DEFAULT_INIT)
+		{
+			monitor_permission(LOCK);
+			rt()->monitor.wait_to_eat--;
+			monitor_permission(UNLOCK);
+		}
+	}
+	return (rt()->monitor.wait_to_eat);
 }
 
 bool	monitor_state(

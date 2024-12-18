@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 03:05:00 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/17 16:53:55 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/17 18:03:18 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ enum e_default
 	NULL_BYTE = 1,
 	GET = 0,
 	SET,
+	EQUAL = 1,
+	DIFF = 2,
 };
 
 enum e_math

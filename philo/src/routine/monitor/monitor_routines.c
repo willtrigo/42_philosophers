@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 14:28:43 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/17 16:49:42 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/17 22:45:06 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,17 @@ bool	is_philos_must_eat(
 	t_routine *rt
 ) {
 	const int	nbr_philos = rt->info.number_of_philosophers;
-	int			must_eat;
+	const int	must_eat = rt->info.number_of_times_each_philosopher_must_eat;
 	int			philos_satisfied;
-	bool		philos_full;
 
 	philos_satisfied = DEFAULT;
-	philos_full = false;
-	must_eat = rt->info.number_of_times_each_philosopher_must_eat;
-	if (nbr_philos != DEFAULT_INIT)
+	if (must_eat != DEFAULT_INIT)
 	{
-		philos_full = is_philos_full(rt, DEFAULT, DEFAULT_INIT);
+		is_philos_full(rt, DEFAULT, DEFAULT_INIT);
 		while (philos_satisfied < must_eat \
 			&& rt->philo[philos_satisfied].must_eat == DEFAULT)
 			philos_satisfied++;
-		if (philos_full && philos_satisfied == nbr_philos)
+		if (philos_satisfied == nbr_philos)
 		{
 			monitor_permission(LOCK);
 			rt->monitor.state = false;
@@ -50,9 +47,7 @@ bool	is_philos_must_eat(
 		}
 	}
 	else
-	{
 		is_philos_full(rt, DEFAULT, DEFAULT_INIT);
-	}
 	return (true);
 }
 
@@ -62,7 +57,7 @@ bool	is_philo_death(
 	int i
 ) {
 	if ((current_time >= rt->philo[i].time_to_last_eat) \
-		&& rt->philo[i].is_full == false)
+		&& rt->philo[i].must_eat != DEFAULT)
 	{
 		output(rt->philo[i].id, current_time, "died");
 		monitor_permission(LOCK);
@@ -88,6 +83,7 @@ static bool	is_philos_full(
 			rt->philo[i].is_full = false;
 			philo_permission(UNLOCK, i);
 		}
+		monitor_wait_to_eat(SET);
 		return (true);
 	}
 	return (false);

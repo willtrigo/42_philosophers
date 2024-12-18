@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 07:18:28 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/16 23:22:26 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/17 23:11:25 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,20 @@ int	routine_init(
 	int status
 ) {
 	int	nbr_philos;
+	int	wait_to_eat;
 
 	nbr_philos = DEFAULT;
+	wait_to_eat = DEFAULT;
 	status = info_init(argv, &rt->info, status);
 	if (status == EXIT_SUCCESS)
 	{
 		nbr_philos = rt->info.number_of_philosophers;
+		wait_to_eat = rt->info.number_of_times_each_philosopher_must_eat;
 		status = fork_init(&rt->fork, nbr_philos, status);
 		if (status == EXIT_SUCCESS)
 			status = philo_init(&rt->philo, nbr_philos, rt->info, status);
 		if (status == EXIT_SUCCESS)
-			status = monitor_init(&rt->monitor, nbr_philos, status);
+			status = monitor_init(&rt->monitor, wait_to_eat, status);
 	}
 	return (status);
 }
