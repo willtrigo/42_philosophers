@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 18:35:06 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/15 18:21:56 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/18 12:14:46 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,6 @@ static int	handler_thread_join(
 				int thread_status
 				);
 
-static int	handler_thread_detach(
-				int thread_status
-				);
-
 int	handler_thread(
 	pthread_t *th,
 	t_handler type,
@@ -44,8 +40,6 @@ int	handler_thread(
 		status = handler_thread_create(pthread_create(th, NULL, func, arg));
 	else if (type == JOIN)
 		status = handler_thread_join(pthread_join(*(th), &thread_return));
-	else if (type == DETACH)
-		status = handler_thread_detach(pthread_detach(*(th)));
 	if (thread_return != NULL)
 		return (EXIT_FAILURE);
 	return (status);
@@ -99,27 +93,6 @@ static int	handler_thread_join(
 		else
 			status = output_error("philo: thread join: " \
 				"unknown error occurred during thread join");
-	}
-	return (status);
-}
-
-static int	handler_thread_detach(
-				int thread_status
-) {
-	int	status;
-
-	status = EXIT_SUCCESS;
-	if (thread_status != DEFAULT)
-	{
-		if (thread_status == EINVAL)
-			status = output_error("philo: thread detach: " \
-				"invalid thread ID");
-		else if (thread_status == ESRCH)
-			status = output_error("philo: thread detach: " \
-				"no thread found with the given ID");
-		else
-			status = output_error("philo: thread detach: " \
-				"unknown error occurred during thread detaching");
 	}
 	return (status);
 }
