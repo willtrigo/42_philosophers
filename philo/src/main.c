@@ -6,13 +6,14 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:17:10 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/15 17:26:08 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/19 00:58:44 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "parse/arguments.h"
 #include "routine/routine.h"
+#include "utils/default.h"
 
 int	main(
 	int argc,
@@ -27,6 +28,8 @@ int	main(
 		status = routine_init(argv, rt(), status);
 	if (status == EXIT_SUCCESS)
 		status = routine_begin(rt(), status);
+	if (status == FAIL)
+		return (EXIT_FAILURE);
 	routine_destroy(rt());
 	return (status);
 }

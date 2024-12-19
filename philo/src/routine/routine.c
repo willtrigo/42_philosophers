@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 07:18:28 by dande-je          #+#    #+#             */
-/*   Updated: 2024/12/17 23:11:25 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/12/19 00:57:35 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int	routine_init(
 		if (status == EXIT_SUCCESS)
 			status = monitor_init(&rt->monitor, wait_to_eat, status);
 	}
+	else
+		return (FAIL);
 	return (status);
 }
 
